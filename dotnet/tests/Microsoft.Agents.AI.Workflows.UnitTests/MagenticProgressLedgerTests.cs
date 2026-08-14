@@ -211,4 +211,20 @@ public class MagenticProgressLedgerTests
             }
         }
     }
+
+    [Fact]
+    public void Test_ProgressLedgerQuestions_TreatsVerifiedNegativeResultsAsComplete()
+    {
+        // Arrange
+        MagenticProgressLedger ledger = new(TestTeamNames, []);
+
+        // Act
+        (string questionBlock, _) = ledger.FormatQuestions();
+
+        // Assert
+        questionBlock.Should().Contain("A verified negative or empty result");
+        questionBlock.Should().Contain("can fully satisfy the request");
+        questionBlock.Should().Contain("False if work remains and the request has not been FULLY addressed");
+        questionBlock.Should().Contain("execution, authorization, connectivity, or investigation failure");
+    }
 }

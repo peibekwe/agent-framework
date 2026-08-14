@@ -17,7 +17,11 @@ namespace Microsoft.Agents.AI.Workflows;
 public class MagenticProgressLedger
 {
     internal static readonly BooleanProgressLedgerSlot IsRequestSatisfiedSlot = new("is_request_satisfied",
-        "Is the request fully satisfied? (True if complete, or False if the original request has yet to be SUCCESSFULLY and FULLY addressed)");
+        "Is the request fully satisfied? (True if the requested work is complete and enough information is available " +
+        "to provide the final answer. A verified negative or empty result, such as confirming that a requested resource " +
+        "does not exist, can fully satisfy the request. False if work remains and the request has not been FULLY addressed. " +
+        "Also answer False if a negative or empty result may be caused by an execution, authorization, connectivity, or " +
+        "investigation failure.)");
 
     internal static readonly BooleanProgressLedgerSlot IsInLoopSlot = new("is_in_loop",
         "Are we in a loop where we are repeating the same requests and or getting the same responses as before? " +

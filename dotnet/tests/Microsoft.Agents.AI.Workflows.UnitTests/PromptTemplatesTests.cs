@@ -104,6 +104,10 @@ public class PromptTemplatesTests
         prompt.Should().Contain("DO NOT OUTPUT ANYTHING OTHER THAN JSON");
         prompt.Should().Contain("next_speaker");
         prompt.Should().Contain("instruction_or_question");
+        prompt.Should().Contain("A verified negative or empty result");
+        prompt.Should().Contain("can fully satisfy the request");
+        prompt.Should().Contain("False if work remains and the request has not been FULLY addressed");
+        prompt.Should().Contain("execution, authorization, connectivity, or investigation failure");
         prompt.Should().NotContain("Do not translate the JSON keys");
     }
 
